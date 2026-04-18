@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: mlx-steer
+Version: 0.0.1
+Summary: MLX steering vectors — coming soon
+License: MIT
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+# mlx-steer
+Activation steering and cognitive monitoring for MLX on Apple Silicon. Coming soon

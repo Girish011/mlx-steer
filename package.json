@@ -1,0 +1,20 @@
+{
+    "name": "mlx-steer",
+    "version": "0.0.1",
+    "description": "MLX steering vectors — coming soon (Python/JS library)",
+    "main": "index.js",
+    "license": "MIT",
+    "files": [
+      "index.js",
+      "README.md"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/girish011/mlx-steer.git"
+    },
+    "homepage": "https://github.com/girish011/mlx-steer#readme",
+    "bugs": {
+      "url": "https://github.com/girish011/mlx-steer/issues"
+    },
+    "keywords": ["mlx", "steering", "vectors", "ai"]
+  }
