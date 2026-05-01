@@ -11,6 +11,7 @@ src/mlx_steer/monitor/__init__.py
 src/mlx_steer/monitor/chi.py
 src/mlx_steer/monitor/entropy.py
 src/mlx_steer/monitor/goal_drift.py
+src/mlx_steer/monitor/hidden_states.py
 src/mlx_steer/monitor/repetition.py
 src/mlx_steer/steering/__init__.py
 src/mlx_steer/steering/compute_vectors.py

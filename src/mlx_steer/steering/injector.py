@@ -47,7 +47,13 @@ class SteeringEngine:
         # Common MLX-LM layout: model.model.layers
         layers = getattr(getattr(self.model, "model", None), "layers", None)
         if layers is None:
-            raise AttributeError("Expected model.model.layers to exist for steering.")
+            # mlx-vlm layout: model.language_model.model.layers
+            lm = getattr(self.model, "language_model", None)
+            layers = getattr(getattr(lm, "model", None), "layers", None)
+        if layers is None:
+            raise AttributeError(
+                "Expected model.model.layers or model.language_model.model.layers to exist for steering."
+            )
 
         self._original_layer = layers[self.layer_idx]
         layers[self.layer_idx] = SteeringWrapper(self._original_layer, self.vector)
@@ -58,6 +64,9 @@ class SteeringEngine:
             return
 
         layers = getattr(getattr(self.model, "model", None), "layers", None)
+        if layers is None:
+            lm = getattr(self.model, "language_model", None)
+            layers = getattr(getattr(lm, "model", None), "layers", None)
         if layers is None:
             return
 

@@ -22,3 +22,8 @@ class CaptureLayer:
         self.captured = out
         return out
 
+    def __getattr__(self, name: str) -> Any:
+        # Delegate attribute access to the wrapped layer so model code that
+        # inspects layer attributes (e.g., Gemma4 layer_type) continues to work.
+        return getattr(self.layer, name)
+
