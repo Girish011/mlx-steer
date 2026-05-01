@@ -1,12 +1,45 @@
 Metadata-Version: 2.4
 Name: mlx-steer
-Version: 0.0.1
-Summary: MLX steering vectors — coming soon
+Version: 0.1.0
+Summary: Activation steering and cognitive monitoring for local LLMs on Apple Silicon
+Author-email: Girish <your-email@example.com>
 License: MIT
-Requires-Python: >=3.9
+Project-URL: Homepage, https://mlxsteer.com
+Project-URL: Repository, https://github.com/Girish011/mlx-steer
+Keywords: mlx,apple-silicon,activation-steering,llm,local-ai
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: mlx>=0.22.0
+Requires-Dist: mlx-lm>=0.20.0
+Requires-Dist: numpy>=1.24.0
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: matplotlib; extra == "dev"
 Dynamic: license-file
 
-# mlx-steer
-Activation steering and cognitive monitoring for MLX on Apple Silicon. Coming soon
+# MLX Steer
+
+Activation steering and cognitive monitoring for local LLMs on Apple Silicon.
+
+> Shape your local model's behavior at inference time — no fine-tuning needed.
+
+**Coming soon.** Star this repo to get notified.
+
+## What this will do
+
+- Compute steering vectors from contrastive prompt pairs
+- Inject vectors into transformer hidden states during generation
+- Monitor cognitive health (entropy, repetition, goal drift) in real-time
+- Works with any MLX-compatible model (Gemma 4, Qwen 2.5, Llama 3)
+
+Built on [MLX](https://github.com/ml-explore/mlx) by Apple.
+
+## License
+
+MIT

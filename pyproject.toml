@@ -1,14 +1,31 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "mlx-steer"
-version = "0.0.1"
-description = "MLX steering vectors — coming soon"
+version = "0.1.0"
+description = "Activation steering and cognitive monitoring for local LLMs on Apple Silicon"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 license = { text = "MIT" }
+authors = [{ name = "Girish", email = "your-email@example.com" }]
+keywords = ["mlx", "apple-silicon", "activation-steering", "llm", "local-ai"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["mlx>=0.22.0", "mlx-lm>=0.20.0", "numpy>=1.24.0"]
+
+[project.optional-dependencies]
+dev = ["pytest", "matplotlib"]
+
+[project.urls]
+Homepage = "https://mlxsteer.com"
+Repository = "https://github.com/Girish011/mlx-steer"
 
 [tool.setuptools.packages.find]
 where = ["src"]
