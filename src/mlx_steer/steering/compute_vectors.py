@@ -1,16 +1,33 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Iterable
+
+import mlx.core as mx
 
 
-def compute_steering_vectors(activations: Any) -> Any:
-    """Compute steering vectors from extracted contrastive activations.
+def compute_steering_vectors(
+    activations: Any,
+    *,
+    normalize: bool = True,
+    eps: float = 1e-8,
+) -> mx.array:
+    """Compute a steering vector from extracted contrastive activations.
 
-    Expected shape/structure depends on the extraction implementation; callers
-    should treat this as an evolving API until the Week 9 vector pipeline lands.
+    Supported inputs:
+    - A single activation dict from `extract_contrastive_activations()` (uses `delta`)
+    - An iterable/list of such dicts (averages deltas)
     """
 
-    raise NotImplementedError(
-        "Steering vector computation is not yet implemented in this repo snapshot."
-    )
+    if isinstance(activations, dict):
+        deltas = [activations["delta"]]
+    else:
+        deltas = [a["delta"] for a in activations]
+
+    deltas = [d if isinstance(d, mx.array) else mx.array(d) for d in deltas]
+    v = mx.mean(mx.stack(deltas, axis=0), axis=0)
+
+    if normalize:
+        denom = mx.sqrt(mx.sum(v * v)) + mx.array(eps)
+        v = v / denom
+    return v
 

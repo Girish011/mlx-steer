@@ -807,6 +807,28 @@ A major limitation of traditional activation steering is that it is "always on".
   session, prompts, CLI. All scaffolding from a thesis that didn't work.
 - Keeps: steering engine, CHI monitor, all foundational signal code.
 
+## 2026-05-01 (Week 9 — TASK-051/052/053 validation + vectors)
+
+- TASK-051 (Gemma 4 E4B-it validation): `mlx-community/gemma-4-e4b-it-4bit`
+  - `mlx_lm.load(...)` fails with extra-parameter mismatch; `mlx-vlm` path works.
+  - Hidden state capture works (CaptureLayer delegates attributes; supports `model.language_model.model.layers`).
+  - Observed: `num_layers=42`, `hidden_dim=2560`, `tok/s~70`, peak memory ~5.25GB, global layers detected.
+  - Summary written to `docs/TASK_051_GEMMA4_VALIDATION.md`.
+
+- TASK-052 (Qwen2.5-Coder-14B validation): `mlx-community/Qwen2.5-Coder-14B-Instruct-4bit`
+  - Observed: `num_layers=48`, `hidden_dim=5120`, `tok/s~23.2`, peak active mem ~8.31GB.
+  - Summary written to `docs/TASK_052_QWEN14B_VALIDATION.md`.
+
+- TASK-053 (Gemma 4 steering vectors):
+  - Implemented `extract_contrastive_activations()` + `compute_steering_vectors()`.
+  - Generated vectors and activations under `vectors/gemma-4-e4b-it/` (formality/conciseness/safety + activations_*.npz + README).
+  - Text-only generations appear repetitive/looping for this Gemma4 `mlx-vlm` conversion, so “output change” validation is unreliable.
+  - Added robust validation based on hidden-state shift; confirmed steering affects internal activations (e.g. `cos_with_vector≈0.995`).
+
+- Upstream (mlx-vlm) follow-up:
+  - Opened PR to fix Gemma4 repetition/echoing in Python `generate()` by applying tokenizer chat templates for Gemma 3/4 in `stream_generate()` (matches CLI behavior).
+  - PR: `https://github.com/Blaizzy/mlx-vlm/pull/1099`
+
 ### Results summary (metrics)
 
 - **Calculator (all 3 modes identical)**

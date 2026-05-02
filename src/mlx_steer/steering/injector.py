@@ -20,6 +20,11 @@ class SteeringWrapper:
             return (hidden, *out[1:])
         return out + self.vector
 
+    def __getattr__(self, name: str) -> Any:
+        # Delegate to wrapped layer for model code that inspects attributes
+        # (e.g., Gemma4 checks layer_type to choose global/local attention).
+        return getattr(self.layer, name)
+
 
 @dataclass
 class SteeringEngine:
