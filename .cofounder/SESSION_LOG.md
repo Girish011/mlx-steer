@@ -775,6 +775,25 @@ A major limitation of traditional activation steering is that it is "always on".
   pytest fails exit 1, model cannot debug. CHI 0.636. Blocked on
   test debugging capability of 7B model.
 
+### Results summary (metrics)
+
+- **Calculator (all 3 modes identical)**
+  - Completed via heuristic completion in **3 turns**
+  - `pytest_executed=true`
+  - `chi_min=0.8602`, `chi_final=0.8793`
+  - `compaction_firings_total=0`, steering never activated
+
+- **Converter (all 3 modes identical)**
+  - Completed via heuristic completion in **4 turns**
+  - `converter_py_exists=true`, `test_converter_py_exists=true`, `pytest_executed=true`
+  - `chi_min=0.8561`, `chi_final=0.8838`
+  - `compaction_firings_total=0`, steering never activated
+
+- Verified files exist in all converter run dirs:
+  - `/tmp/task047_conv_base`: `converter.py`, `test_converter.py` ✅
+  - `/tmp/task047_conv_steer`: `converter.py`, `test_converter.py` ✅
+  - `/tmp/task047_conv_full`: `converter.py`, `test_converter.py` ✅
+
 ## 2026-04-08 (Week 8 — TASK-047E + STRATEGIC PIVOT)
 
 - TASK-047E COMPLETE. Goal drift fix: rolling baseline normalization,
@@ -829,24 +848,16 @@ A major limitation of traditional activation steering is that it is "always on".
   - Opened PR to fix Gemma4 repetition/echoing in Python `generate()` by applying tokenizer chat templates for Gemma 3/4 in `stream_generate()` (matches CLI behavior).
   - PR: `https://github.com/Blaizzy/mlx-vlm/pull/1099`
 
-### Results summary (metrics)
+## 2026-05-02 (Week 9 — TASK-054: Qwen2.5-Coder-14B steering vectors)
 
-- **Calculator (all 3 modes identical)**
-  - Completed via heuristic completion in **3 turns**
-  - `pytest_executed=true`
-  - `chi_min=0.8602`, `chi_final=0.8793`
-  - `compaction_firings_total=0`, steering never activated
-
-- **Converter (all 3 modes identical)**
-  - Completed via heuristic completion in **4 turns**
-  - `converter_py_exists=true`, `test_converter_py_exists=true`, `pytest_executed=true`
-  - `chi_min=0.8561`, `chi_final=0.8838`
-  - `compaction_firings_total=0`, steering never activated
-
-- Verified files exist in all converter run dirs:
-  - `/tmp/task047_conv_base`: `converter.py`, `test_converter.py` ✅
-  - `/tmp/task047_conv_steer`: `converter.py`, `test_converter.py` ✅
-  - `/tmp/task047_conv_full`: `converter.py`, `test_converter.py` ✅
+- Implemented `scripts/task_054_compute_qwen14b_vectors.py` (same pipeline as TASK-053).
+- Generated artifacts under `vectors/qwen2.5-coder-14b/`:
+  - `formality.npz` (layer=47), `conciseness.npz` (layer=47), `safety.npz` (layer=44)
+  - `activations_{formality,conciseness,safety}.npz`
+  - `README.md`
+- Notes:
+  - Layer search uses a coarse grid (stride=4) for speed.
+  - `mlx_lm.generate` quick A/B can be identical under greedy decoding; hidden-state shift validation confirms steering affects activations (`cos_with_vector≈1.0` on the sanity check).
 
 ## 2026-04-08 (Week 8 — TASK-047C: Intervention ladder vs think-loop paralysis)
 
