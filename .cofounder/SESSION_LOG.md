@@ -929,3 +929,11 @@ A major limitation of traditional activation steering is that it is "always on".
 - `data/task047c_base.log`, `data/task047c_steer.log`, `data/task047c_full.log`
 - Working dirs: `/tmp/task047c_exp_{base,steer,full}/`
 - `scripts/run_task047c.sh` (runner script)
+
+## 2026-05-02 — TASK-055: CHI calibration per model
+
+- Added `src/mlx_steer/monitor/calibration.py` with `MODEL_CALIBRATION` for `gemma-4-e4b-it` and `qwen2.5-coder-14b` (cold-start, baseline window, degradation thresholds per TASK-055).
+- Extended `CHIMonitor`: default path unchanged (repetition + goal drift + same EMA); with `model_key` or a `calibration` mapping, enables cold-start CHI, rolling MAD drift normalization, optional `mean_token_entropy` and `hidden_pooled` (consecutive-turn cosine), and `degradation_threshold` alias.
+- Script `scripts/task_055_chi_calibration_baseline.py`: 20 shared multi-topic user turns, logs per-turn CHI and signals to `data/task_055_chi_baseline.json` for Qwen (mlx-lm) and Gemma (mlx-vlm stream). Header documents install and `--models` / `--max-turns` / `--max-tokens`.
+- **Local runs:** Qwen 6-turn smoke (`--max-turns 6 --max-tokens 96`) after cold-start: **CHI range ≈ 0.19** (min ≈ 0.78, max ≈ 0.97), above the 0.10 target. Gemma 1-turn smoke only hit cold-start (range 0.0); use full 20 turns for Part B on Gemma. No calibration constant tweaks yet; defaults from the task snippet are wired as-is.
+- Git: `TASK-055: per-model CHI calibration`
