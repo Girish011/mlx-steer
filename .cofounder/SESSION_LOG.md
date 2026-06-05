@@ -937,3 +937,12 @@ A major limitation of traditional activation steering is that it is "always on".
 - Script `scripts/task_055_chi_calibration_baseline.py`: 20 shared multi-topic user turns, logs per-turn CHI and signals to `data/task_055_chi_baseline.json` for Qwen (mlx-lm) and Gemma (mlx-vlm stream). Header documents install and `--models` / `--max-turns` / `--max-tokens`.
 - **Local runs:** Qwen 6-turn smoke (`--max-turns 6 --max-tokens 96`) after cold-start: **CHI range ≈ 0.19** (min ≈ 0.78, max ≈ 0.97), above the 0.10 target. Gemma 1-turn smoke only hit cold-start (range 0.0); use full 20 turns for Part B on Gemma. No calibration constant tweaks yet; defaults from the task snippet are wired as-is.
 - Git: `TASK-055: per-model CHI calibration`
+
+## 2026-05-31 — TASK-056: Gemma 4 layer/alpha sweep
+
+- Added `scripts/task_056_gemma4_sweep.py`: 5 global layers × 4 alphas, 5-turn chat, Gemma instruct prompts via `apply_chat_template`.
+- Sweep on `formality` vector; grid layers `[5, 11, 23, 29, 41]`, alphas `[0.25, 0.5, 0.75, 1.0]`.
+- **Results:** 20/20 cells alive (>20 tokens/turn); no failure modes in grid.
+- **Best cell:** layer **11**, alpha **0.25** (mean CHI 0.902 vs baseline 0.900).
+- Artifacts: `vectors/gemma-4-e4b-it/sweep_results.json`, `sweep_results.png`, updated README.
+- Run: `python3 scripts/task_056_gemma4_sweep.py` (~4 min on local Gemma 4 E4B 4bit).

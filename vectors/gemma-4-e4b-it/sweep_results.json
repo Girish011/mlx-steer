@@ -1,0 +1,316 @@
+{
+  "protocol": "TASK-056",
+  "created_utc": "2026-06-05T17:21:59.294348+00:00",
+  "model_id": "mlx-community/gemma-4-e4b-it-4bit",
+  "vector_set": "formality",
+  "vector_path": "vectors/gemma-4-e4b-it/formality.npz",
+  "turns": [
+    "In one sentence each, what do TCP and UDP optimize for?",
+    "Switching topics: list three ways to reduce Python API latency.",
+    "Unrelated: what is a confusion matrix used for in classification?",
+    "New topic: name two trade-offs between batch size and learning rate in SGD.",
+    "Different domain: what does idempotency mean for HTTP APIs?"
+  ],
+  "max_tokens": 128,
+  "alive_min_tokens": 20,
+  "global_layers": [
+    5,
+    11,
+    17,
+    23,
+    29,
+    35,
+    41
+  ],
+  "sweep_grid": {
+    "layers": [
+      5,
+      11,
+      23,
+      29,
+      41
+    ],
+    "alphas": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ]
+  },
+  "baseline_mean_chi": 0.9004010201467032,
+  "baseline_rows": [
+    {
+      "turn": 0,
+      "user": "In one sentence each, what do TCP and UDP optimize for?",
+      "chi": 0.9700000000000001,
+      "response_length_tokens": 40,
+      "response_preview": "TCP optimizes for reliable, ordered delivery of a stream of bytes, ensuring all data arrives correctly and in sequence. UDP optimizes for speed and low latency by sending data without guarantees of de"
+    },
+    {
+      "turn": 1,
+      "user": "Switching topics: list three ways to reduce Python API latency.",
+      "chi": 0.9460000000000002,
+      "response_length_tokens": 129,
+      "response_preview": "Here are three ways to reduce Python API latency:\n\n1. **Optimize I/O operations:** Profile and optimize bottlenecks in network calls, database queries, or file operations, as these are often the slowe"
+    },
+    {
+      "turn": 2,
+      "user": "Unrelated: what is a confusion matrix used for in classification?",
+      "chi": 0.9059432698944089,
+      "response_length_tokens": 47,
+      "response_preview": "A confusion matrix is a diagnostic tool used in classification models to provide a detailed breakdown of the model's performance by comparing the predicted class labels against the actual class labels"
+    },
+    {
+      "turn": 3,
+      "user": "New topic: name two trade-offs between batch size and learning rate in SGD.",
+      "chi": 0.8577318524734207,
+      "response_length_tokens": 87,
+      "response_preview": "One trade-off is that a **larger batch size** provides a more accurate estimate of the true gradient, leading to more stable convergence but requires careful tuning with a potentially **larger learnin"
+    },
+    {
+      "turn": 4,
+      "user": "Different domain: what does idempotency mean for HTTP APIs?",
+      "chi": 0.8223299783656862,
+      "response_length_tokens": 42,
+      "response_preview": "Idempotency for HTTP APIs means that making the exact same request multiple times will result in the same state on the server as making it only once, without causing unintended side effects after the "
+    }
+  ],
+  "results": [
+    {
+      "layer": 5,
+      "alpha": 0.25,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 71.4,
+        "mean_chi": 0.8947266132457269,
+        "chi_drop": 0.14952914799023298,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 5,
+      "alpha": 0.5,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 71.4,
+        "mean_chi": 0.8946577151385806,
+        "chi_drop": 0.14964228846444771,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 5,
+      "alpha": 0.75,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 69.0,
+        "mean_chi": 0.897052758810797,
+        "chi_drop": 0.14646277577317723,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 5,
+      "alpha": 1.0,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 71.4,
+        "mean_chi": 0.8954396667704435,
+        "chi_drop": 0.14804980733190065,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 11,
+      "alpha": 0.25,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 81.4,
+        "mean_chi": 0.9021183503777465,
+        "chi_drop": 0.16337127277170882,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 11,
+      "alpha": 0.5,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 58.6,
+        "mean_chi": 0.8917041087889871,
+        "chi_drop": 0.1469226268501851,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 11,
+      "alpha": 0.75,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 58.6,
+        "mean_chi": 0.8955640311955934,
+        "chi_drop": 0.14121964178150248,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 11,
+      "alpha": 1.0,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 69.2,
+        "mean_chi": 0.8925902460347052,
+        "chi_drop": 0.15570487777662567,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 23,
+      "alpha": 0.25,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 66.2,
+        "mean_chi": 0.8980983123239943,
+        "chi_drop": 0.1457317834819013,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 23,
+      "alpha": 0.5,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 66.2,
+        "mean_chi": 0.8981506639263049,
+        "chi_drop": 0.1456183530896934,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 23,
+      "alpha": 0.75,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 66.2,
+        "mean_chi": 0.8982036926866431,
+        "chi_drop": 0.14550523289818662,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 23,
+      "alpha": 1.0,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 66.2,
+        "mean_chi": 0.8982574678560511,
+        "chi_drop": 0.14539223076958474,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 29,
+      "alpha": 0.25,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 69.2,
+        "mean_chi": 0.900027154379569,
+        "chi_drop": 0.14766303870511377,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 29,
+      "alpha": 0.5,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 68.8,
+        "mean_chi": 0.9011938775314757,
+        "chi_drop": 0.14757623668084496,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 29,
+      "alpha": 0.75,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 69.2,
+        "mean_chi": 0.9006435825748158,
+        "chi_drop": 0.14683264886334002,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 29,
+      "alpha": 1.0,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 69.2,
+        "mean_chi": 0.9007027398897931,
+        "chi_drop": 0.1467378951718924,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 41,
+      "alpha": 0.25,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 69.8,
+        "mean_chi": 0.8979993753616655,
+        "chi_drop": 0.15334185460785443,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 41,
+      "alpha": 0.5,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 69.2,
+        "mean_chi": 0.9000237865069438,
+        "chi_drop": 0.1477647810336319,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 41,
+      "alpha": 0.75,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 62.6,
+        "mean_chi": 0.8989112591286403,
+        "chi_drop": 0.13929432371758876,
+        "response_changed": true
+      }
+    },
+    {
+      "layer": 41,
+      "alpha": 1.0,
+      "metrics": {
+        "response_alive": true,
+        "mean_response_length": 64.8,
+        "mean_chi": 0.8988730073110981,
+        "chi_drop": 0.13636666505765072,
+        "response_changed": true
+      }
+    }
+  ],
+  "analysis": {
+    "baseline_mean_chi": 0.9004010201467032,
+    "best": {
+      "layer": 11,
+      "alpha": 0.25,
+      "mean_chi": 0.9021183503777465,
+      "mean_response_length": 81.4
+    },
+    "recommended_alpha_range": [
+      0.25,
+      1.0
+    ],
+    "failure_modes": [],
+    "alive_count": 20,
+    "dead_count": 0
+  }
+}

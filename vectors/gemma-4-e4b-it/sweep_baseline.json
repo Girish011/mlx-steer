@@ -1,0 +1,48 @@
+{
+  "model_id": "mlx-community/gemma-4-e4b-it-4bit",
+  "turns": [
+    "In one sentence each, what do TCP and UDP optimize for?",
+    "Switching topics: list three ways to reduce Python API latency.",
+    "Unrelated: what is a confusion matrix used for in classification?",
+    "New topic: name two trade-offs between batch size and learning rate in SGD.",
+    "Different domain: what does idempotency mean for HTTP APIs?"
+  ],
+  "max_tokens": 128,
+  "rows": [
+    {
+      "turn": 0,
+      "user": "In one sentence each, what do TCP and UDP optimize for?",
+      "chi": 0.9700000000000001,
+      "response_length_tokens": 40,
+      "response_preview": "TCP optimizes for reliable, ordered delivery of a stream of bytes, ensuring all data arrives correctly and in sequence. UDP optimizes for speed and low latency by sending data without guarantees of de"
+    },
+    {
+      "turn": 1,
+      "user": "Switching topics: list three ways to reduce Python API latency.",
+      "chi": 0.9460000000000002,
+      "response_length_tokens": 129,
+      "response_preview": "Here are three ways to reduce Python API latency:\n\n1. **Optimize I/O operations:** Profile and optimize bottlenecks in network calls, database queries, or file operations, as these are often the slowe"
+    },
+    {
+      "turn": 2,
+      "user": "Unrelated: what is a confusion matrix used for in classification?",
+      "chi": 0.9059432698944089,
+      "response_length_tokens": 47,
+      "response_preview": "A confusion matrix is a diagnostic tool used in classification models to provide a detailed breakdown of the model's performance by comparing the predicted class labels against the actual class labels"
+    },
+    {
+      "turn": 3,
+      "user": "New topic: name two trade-offs between batch size and learning rate in SGD.",
+      "chi": 0.8577318524734207,
+      "response_length_tokens": 87,
+      "response_preview": "One trade-off is that a **larger batch size** provides a more accurate estimate of the true gradient, leading to more stable convergence but requires careful tuning with a potentially **larger learnin"
+    },
+    {
+      "turn": 4,
+      "user": "Different domain: what does idempotency mean for HTTP APIs?",
+      "chi": 0.8223299783656862,
+      "response_length_tokens": 42,
+      "response_preview": "Idempotency for HTTP APIs means that making the exact same request multiple times will result in the same state on the server as making it only once, without causing unintended side effects after the "
+    }
+  ]
+}
